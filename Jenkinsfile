@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/funny-website.git'
+                git 'https://github.com/vishalhedaoo/FunnyTech.git'
             }
         }
 
