@@ -1,103 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Animal Fun Zone 🐾</title>
+    <title>Funny Click 😂</title>
     <style>
         body {
             text-align: center;
             font-family: Arial;
             background-color: #f0f8ff;
         }
-        h1 {
-            margin-top: 20px;
-        }
-        img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            cursor: pointer;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
         button {
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 18px;
+            padding: 15px 30px;
+            font-size: 20px;
             cursor: pointer;
-            border-radius: 10px;
+        }
+        #funnyText {
+            margin-top: 20px;
+            font-size: 24px;
+            color: red;
         }
     </style>
 </head>
 <body>
 
-    <h1>Click the Animal 🐾</h1>
-
-    <!-- Animal Image -->
-    <img id="animalImage" onclick="playAnimal()" src="" alt="Animal">
-
-    <!-- Button -->
-    <br>
-    <button onclick="playAnimal()">Click Me 😄</button>
-
-    <!-- Audio -->
-    <audio id="animalSound"></audio>
+    <h1>Click Me for Fun 😜</h1>
+    <button onclick="showFunny()">Click Here</button>
+    <audio id="funnySound" src="sound.mp3"></audio>
+    <div id="funnyText"></div>
 
     <script>
-        const animals = [
-            {
-                name: "Dog",
-                img: "https://images.unsplash.com/photo-1517849845537-4d257902454a",
-                sound: "https://www.soundjay.com/animal/dog-bark-01.mp3"
-            },
-            {
-                name: "Cat",
-                img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
-                sound: "https://www.soundjay.com/animal/cat-meow-01.mp3"
-            },
-            {
-                name: "Cow",
-                img: "https://images.unsplash.com/photo-1500595046743-cd271d694d30",
-                sound: "https://www.soundjay.com/animal/cow-moo1.mp3"
-            },
-            {
-                name: "Lion",
-                img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d",
-                sound: "https://www.soundjay.com/animal/lion-roar.mp3"
-            },
-            {
-                name: "Elephant",
-                img: "https://images.unsplash.com/photo-1557053964-937650b63311",
-                sound: "https://www.soundjay.com/animal/elephant-trumpet.mp3"
-            }
-        ];
+        function showFunny() {
+            const jokes = [
+                "Why DevOps engineer broke up? Too many pipelines 😂",
+                "404: Joke Not Found 😜",
+                "I told my code a joke… it didn’t compile 😆",
+                "Keep clicking… promotion is coming 🤣",
+                "You clicked again?? Take a break 😂"
+            ];
 
-        let currentIndex = -1;
-
-        function getRandomAnimal() {
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * animals.length);
-            } while (newIndex === currentIndex);
-
-            currentIndex = newIndex;
-            return animals[newIndex];
+            const random = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById("funnyText").innerText = random;
         }
-
-        function playAnimal() {
-            const animal = getRandomAnimal();
-
-            // Change image
-            document.getElementById("animalImage").src = animal.img;
-
-            // Play sound
-            const sound = document.getElementById("animalSound");
-            sound.src = animal.sound;
-            sound.currentTime = 0;
-            sound.play();
-        }
-
-        // Load first animal on page load
-        window.onload = playAnimal;
     </script>
 
 </body>
