@@ -17,7 +17,6 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh 'docker rm -f funny-container || true'
-               # sh 'docker run -d -p 8080:81 --name funny-container funny-site'
                 sh 'docker run -d -p 8090:81 --name funny-container funny-site'
             }
         }
