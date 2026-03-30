@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Funny Click 😂</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #f0f8ff;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #funnyText {
+            margin-top: 20px;
+            font-size: 24px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Click Me for Fun 😜</h1>
+    <button onclick="showFunny()">Click Here</button>
+
+    <div id="funnyText"></div>
+
+    <script>
+        function showFunny() {
+            const jokes = [
+                "Why DevOps engineer broke up? Too many pipelines 😂",
+                "404: Joke Not Found 😜",
+                "I told my code a joke… it didn’t compile 😆",
+                "Keep clicking… promotion is coming 🤣",
+                "You clicked again?? Take a break 😂"
+            ];
+
+            const random = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById("funnyText").innerText = random;
+        }
+    </script>
+
+</body>
+</html>
