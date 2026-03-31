@@ -1,49 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Funny Click 😂</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial;
-            background-color: #f0f8ff;
-        }
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        #funnyText {
-            margin-top: 20px;
-            font-size: 24px;
-            color: red;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Animal Fun World 🐾</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        width: 350px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    h1 {
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    img:hover {
+        transform: scale(1.05);
+    }
+
+    .btn {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #ff7eb3;
+        color: white;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #ff4d94;
+        transform: scale(1.1);
+    }
+
+    .animal-name {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #fff;
+    }
+</style>
 </head>
+
 <body>
 
-    <h1>Click Me for Fun 😜</h1>
-    <button onclick="showFunny()">Click Here</button>
-    <audio id="funnySound" src="sound.mp3"></audio>
-    <div id="funnyText"></div>
+<div class="card">
+    <h1>Animal Fun 🐾</h1>
 
-    <script>
-        function showFunny() {
-            const jokes = [
-                "Why DevOps engineer broke up? Too many pipelines 😂",
-                "404: Joke Not Found 😜",
-                "I told my code a joke… it didn’t compile 😆",
-                "Keep clicking… promotion is coming 🤣",
-                "You clicked again?? Take a break 😂"
-            ];
+    <img id="animalImage" onclick="playSound()" src="" alt="animal">
 
-            const random = jokes[Math.floor(Math.random() * jokes.length)];
-            document.getElementById("funnyText").innerText = random;
+    <div class="animal-name" id="animalName"></div>
+
+    <button class="btn" onclick="nextAnimal()">Next ➡️</button>
+
+    <audio id="sound"></audio>
+</div>
+
+<script>
+    const animals = [
+        {
+            name: "Dog 🐶",
+            img: "https://images.unsplash.com/photo-1517849845537-4d257902454a",
+            sound: "https://www.soundjay.com/animal/dog-bark-01.mp3"
+        },
+        {
+            name: "Cat 🐱",
+            img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
+            sound: "https://www.soundjay.com/animal/cat-meow-01.mp3"
+        },
+        {
+            name: "Lion 🦁",
+            img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d",
+            sound: "https://www.soundjay.com/animal/lion-roar.mp3"
+        },
+        {
+            name: "Elephant 🐘",
+            img: "https://images.unsplash.com/photo-1557053964-937650b63311",
+            sound: "https://www.soundjay.com/animal/elephant-trumpet.mp3"
+        },
+        {
+            name: "Cow 🐄",
+            img: "https://images.unsplash.com/photo-1500595046743-cd271d694d30",
+            sound: "https://www.soundjay.com/animal/cow-moo1.mp3"
         }
-    </script>
+    ];
+
+    let current = 0;
+
+    function loadAnimal(index) {
+        document.getElementById("animalImage").src = animals[index].img;
+        document.getElementById("animalName").innerText = animals[index].name;
+        document.getElementById("sound").src = animals[index].sound;
+    }
+
+    function playSound() {
+        const sound = document.getElementById("sound");
+        sound.currentTime = 0;
+        sound.play();
+    }
+
+    function nextAnimal() {
+        current = Math.floor(Math.random() * animals.length);
+        loadAnimal(current);
+        playSound();
+    }
+
+    // Initial load
+    window.onload = () => {
+        nextAnimal();
+    }
+</script>
 
 </body>
 </html>
-
 
 
